@@ -105,6 +105,7 @@ class Handler(Thread):
         Пользователь вводит путь к файлу, который затем отправляется на сервер.
         """
         path = input('Введите путь: ').strip()
+        path = path.replace('"', '').replace("'", "")
         if not isExists(path):
             return print(f"LocalERR: файл {path} не существует")
 

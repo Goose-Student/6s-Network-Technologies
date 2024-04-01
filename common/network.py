@@ -46,7 +46,7 @@ class Ms:
 
     # Регистрационные сообщения
     REG_SUC = 'успешная регистрация'.encode()
-    REG_ERR = 'пользователь уже существует'
+    REG_ERR = 'пользователь уже существует'.encode()
 
     # Файловые сообщения
     UP_SUC = 'успешная передача файла'.encode()
@@ -60,8 +60,8 @@ class Socket(socket):
     def __init__(self, *args, **kwargs):
         """Расширение класса socket с дополнительной функциональностью."""
         super().__init__(*args, **kwargs)
-        self._separator = b'\\sep'
-        self._end = b'\\end'
+        self._separator = b'@sep'
+        self._end = b'@end'
         self._chunk_size = 16
 
     # Attribute methods
@@ -109,7 +109,7 @@ class Socket(socket):
 
         buffer = buffer.replace(self.end, b'')
         buffer = buffer.split(self.separator)[:target_len]
-        buffer += [b'\\null'] * (target_len - len(buffer))
+        buffer += [b'@null'] * (target_len - len(buffer))
         return tuple(buffer)
 
     def send(self, *msgs: bytes) -> None:

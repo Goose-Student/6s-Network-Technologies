@@ -47,6 +47,7 @@ class Data(dict):
             try:
                 super().__init__(pickle.load(file))  # Загрузка данных из файла
                 file.close()
+                return
             except EOFError:
                 file.close()
         super().__init__({'whitelist': ['127.0.0.1'], 'users': {}})  # Данные по умолчанию, если файл не существует
@@ -145,8 +146,8 @@ class Handler(Thread):
         msgs = self._socket.receive(target_len=3)
 
         isHeader = (msgs[0] == Hs.REG)
-        isUser = not (msgs[0] in self._data['users'] and msgs[1] == b'\null')
-        isPass = not (msgs[2] == b'\null')
+        isUser = not (msgs[1] in self._data['users'] or msgs[1] == b'@null')
+        isPass = not (msgs[2] == b'@null')
 
         if not isHeader:
             return self._socket.send(Hs.REG, Ms.REQ_ERR)
