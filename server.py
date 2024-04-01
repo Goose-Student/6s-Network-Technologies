@@ -1,4 +1,4 @@
-from os.path import exists as isExists
+from os.path import exists as is_exists
 import pickle
 from socket import AF_INET, SOCK_STREAM
 from threading import Thread
@@ -42,7 +42,7 @@ class Data(dict):
             path (str): Путь к файлу данных.
         """
         self._path = path
-        if isExists(path):  # Проверка, существует ли файл
+        if is_exists(path):  # Проверка, существует ли файл
             file = open(path, 'rb')
             try:
                 super().__init__(pickle.load(file))  # Загрузка данных из файла

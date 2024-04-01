@@ -1,5 +1,5 @@
 import os.path
-from os.path import exists as isExists
+from os.path import exists as is_exists
 from socket import AF_INET, SOCK_STREAM
 from threading import Thread
 
@@ -106,7 +106,7 @@ class Handler(Thread):
         """
         path = input('Введите путь: ').strip()
         path = path.replace('"', '').replace("'", "")
-        if not isExists(path):
+        if not is_exists(path):
             return print(f"LocalERR: файл {path} не существует")
 
         fileName = os.path.basename(path).encode()
