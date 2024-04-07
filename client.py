@@ -3,7 +3,7 @@ from os.path import exists as is_exists
 from socket import AF_INET, SOCK_STREAM
 from threading import Thread
 
-from common.network import Socket, Hs, Ms
+from common.network import Socket, Headers, Messages
 
 
 class Handler(Thread):
@@ -45,20 +45,20 @@ class Handler(Thread):
         method = input('Введите метод (<auth> или <reg>): ').strip().encode()
         version = input('Введите версию (<1> или <2>): ').strip().encode()
 
-        self._socket.send(Hs.CONN, user_agent, method, version)
+        self._socket.send(Headers.CONN, user_agent, method, version)
         msgs = self._socket.receive(target_len=2)
 
         # Проверка корректности запроса
-        if msgs[1] == Ms.CONN_ERR:
+        if msgs[1] == Messages.CONN_ERR:
             self._state = None
             return print(msgs[1].decode())
-        elif msgs[1] != Ms.CONN_SUC:
+        elif msgs[1] != Messages.CONN_SUC:
             return print(msgs[1].decode())
 
         # Определение метода
-        if method == Hs.AUTH:
+        if method == Headers.AUTH:
             self._state = self.auth
-        elif method == Hs.REG:
+        elif method == Headers.REG:
             self._state = self.reg
         return print(msgs[1].decode())
 
@@ -71,10 +71,10 @@ class Handler(Thread):
         login = input('Введите логин: ').strip().encode()
         password = input('Введите пароль: ').strip().encode()
 
-        self._socket.send(Hs.AUTH, login, password)
+        self._socket.send(Headers.AUTH, login, password)
         msgs = self._socket.receive(target_len=2)
 
-        if msgs[1] != Ms.AUTH_SUC:
+        if msgs[1] != Messages.AUTH_SUC:
             return print(msgs[1].decode())
 
         self._state = self.upload
@@ -89,10 +89,10 @@ class Handler(Thread):
         login = input('Введите логин: ').strip().encode()
         password = input('Введите пароль: ').strip().encode()
 
-        self._socket.send(Hs.REG, login, password)
+        self._socket.send(Headers.REG, login, password)
         msgs = self._socket.receive(target_len=2)
 
-        if msgs[1] != Ms.REG_SUC:
+        if msgs[1] != Messages.REG_SUC:
             return print(msgs[1].decode())
 
         self._state = self.upload
@@ -113,10 +113,10 @@ class Handler(Thread):
         with open(path, 'rb') as file:
             content = file.read()
 
-        self._socket.send(Hs.UP, fileName, content)
+        self._socket.send(Headers.UP, fileName, content)
         msgs = self._socket.receive(target_len=2)
 
-        if msgs[1] != Ms.UP_SUC:
+        if msgs[1] != Messages.UP_SUC:
             return print(msgs[1].decode())
 
         self._state = None

@@ -1,15 +1,16 @@
+import ipaddress
 from os.path import exists as is_exists
 import pickle
 from socket import AF_INET, SOCK_STREAM
 from threading import Thread
 from typing import Tuple, List
 
-from common.network import Socket, Hs, Ms
+from common.network import Socket, Headers, Messages
 
 PATH = './workgroup.bin'
 HOST = ''
 PORT = 25565
-CONN_LIMIT = 3
+CONN_LIMIT = 0
 
 
 def file_type(content: bytes) -> bytes:
@@ -50,7 +51,8 @@ class Data(dict):
                 return
             except EOFError:
                 file.close()
-        super().__init__({'whitelist': ['127.0.0.1'], 'users': {}})  # Данные по умолчанию, если файл не существует
+        super().__init__({'whitelist': ['127.0.0.1',
+                                        ], 'users': {}})  # Данные по умолчанию, если файл не существует
         with open(path, 'wb+') as file:
             pickle.dump(self, file)  # Сохранение данных в файле
 
@@ -109,17 +111,17 @@ class Handler(Thread):
 
         if self._exit_flag:
             self._state = None
-            return self._socket.send(Hs.CONN, Ms.CONN_ERR)
+            return self._socket.send(Headers.CONN, Messages.CONN_ERR)
 
-        isHeader = (msgs[0] == Hs.CONN)
-        isMethod = msgs[2] in (Hs.AUTH, Hs.REG)
+        isHeader = (msgs[0] == Headers.CONN)
+        isMethod = msgs[2] in (Headers.AUTH, Headers.REG)
         isVersion = msgs[3] in (b'1', b'2')
 
         if not (isHeader and isVersion and isMethod):
-            return self._socket.send(Hs.CONN, Ms.REQ_ERR)
+            return self._socket.send(Headers.CONN, Messages.REQ_ERR)
 
-        self._socket.send(Hs.CONN, Ms.CONN_SUC)
-        self._state = self.auth if msgs[2] == Hs.AUTH else self.reg
+        self._socket.send(Headers.CONN, Messages.CONN_SUC)
+        self._state = self.auth if msgs[2] == Headers.AUTH else self.reg
         self._version = msgs[3]
 
     def auth(self):
@@ -128,15 +130,15 @@ class Handler(Thread):
         """
         msgs = self._socket.receive(target_len=3)
 
-        isHeader = (msgs[0] == Hs.AUTH)
+        isHeader = (msgs[0] == Headers.AUTH)
         isValid = (msgs[1] in self._data['users'] and self._data['users'][msgs[1]] == msgs[2])
 
         if not isHeader:
-            return self._socket.send(Hs.AUTH, Ms.REQ_ERR)
+            return self._socket.send(Headers.AUTH, Messages.REQ_ERR)
         elif not isValid:
-            return self._socket.send(Hs.AUTH, Ms.AUTH_ERR)
+            return self._socket.send(Headers.AUTH, Messages.AUTH_ERR)
 
-        self._socket.send(Hs.AUTH, Ms.AUTH_SUC)
+        self._socket.send(Headers.AUTH, Messages.AUTH_SUC)
         self._state = self.upload
 
     def reg(self):
@@ -145,19 +147,19 @@ class Handler(Thread):
         """
         msgs = self._socket.receive(target_len=3)
 
-        isHeader = (msgs[0] == Hs.REG)
+        isHeader = (msgs[0] == Headers.REG)
         isUser = not (msgs[1] in self._data['users'] or msgs[1] == b'@null')
         isPass = not (msgs[2] == b'@null')
 
         if not isHeader:
-            return self._socket.send(Hs.REG, Ms.REQ_ERR)
+            return self._socket.send(Headers.REG, Messages.REQ_ERR)
         elif not (isUser and isPass):
-            return self._socket.send(Hs.REG, Ms.REG_ERR)
+            return self._socket.send(Headers.REG, Messages.REG_ERR)
 
         self._data['users'][msgs[1]] = msgs[2]
         self._data.commit()
 
-        self._socket.send(Hs.REG, Ms.REG_SUC)
+        self._socket.send(Headers.REG, Messages.REG_SUC)
         self._state = self.upload
 
     def upload(self):
@@ -166,26 +168,38 @@ class Handler(Thread):
         """
         msgs = self._socket.receive(target_len=3)
 
-        isHeader = (msgs[0] == Hs.UP)
-        isFileName = not (msgs[1] == b'\null')
-        isContent = not (msgs[2] == b'\null')
+        isHeader = (msgs[0] == Headers.UP)
+        isFileName = not (msgs[1] == b'@null')
+        isContent = not (msgs[2] == b'@null')
 
         if not (isHeader and isFileName and isContent):
-            return self._socket.send(Hs.UP, Ms.REQ_ERR)
+            return self._socket.send(Headers.UP, Messages.REQ_ERR)
 
         fileType = file_type(msgs[2])
         if fileType != self._version:
-            return self._socket.send(Hs.UP, Ms.UP_ERR)
+            return self._socket.send(Headers.UP, Messages.UP_ERR)
 
         with open(msgs[1].decode(), 'wb+') as file:
             file.write(msgs[2])
-        self._socket.send(Hs.UP, Ms.UP_SUC)
+        self._socket.send(Headers.UP, Messages.UP_SUC)
         self._state = None
 
 
 # Установка атрибутов сервера
 server_data = Data(PATH)  # Инициализация серверных данных
 server_queue = []  # Инициализация пустой очереди для обработчиков
+
+# Добавление ip адресов
+start_ip = ipaddress.IPv4Address('192.168.0.128')
+end_ip = ipaddress.IPv4Address('192.168.0.196')
+
+for ip_int in range(int(start_ip), int(end_ip) + 1):
+    ip = ipaddress.IPv4Address(ip_int)
+    if str(ip) not in server_data['whitelist']:
+        server_data['whitelist'].append(str(ip))
+
+server_data.commit()
+print('ip`s:', server_data['whitelist'])
 
 # Установка сокета
 server_socket = Socket(AF_INET, SOCK_STREAM)  # Создание socket объекта

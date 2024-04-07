@@ -5,7 +5,7 @@ from socket import socket
 from _socket import getdefaulttimeout
 
 
-class Hs:
+class Headers:
     """
     Класс, содержащий константы заголовков.
 
@@ -21,7 +21,7 @@ class Hs:
     UP = b'upload'
 
 
-class Ms:
+class Messages:
     """
     Класс, содержащий сообщения для обмена данными.
 
@@ -62,7 +62,7 @@ class Socket(socket):
         super().__init__(*args, **kwargs)
         self._separator = b'@sep'
         self._end = b'@end'
-        self._chunk_size = 16
+        self._chunk_size = 1024
 
     # Attribute methods
     @property
