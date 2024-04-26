@@ -1,0 +1,29 @@
+// ping I11 
+Router3#ping 8.1.1.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.1.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 3/4/9 ms
+
+// ping I22 
+Router3#ping 8.1.3.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.3.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+// ping I31 
+Router3#ping 8.1.1.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.1.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/2/5 ms
+
+// ping I32 
+Router3#ping 8.1.3.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.3.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 3/3/4 ms
+
+Router3#
