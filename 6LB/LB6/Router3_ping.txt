@@ -1,7 +1,7 @@
 // ping I11 
-Router3#ping 8.1.1.2
+Router3#ping 8.1.1.1
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.1.2, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to 8.1.1.1, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 3/4/9 ms
 
