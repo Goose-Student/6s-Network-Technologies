@@ -1,0 +1,27 @@
+// Запуск роутера и смена имени
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname Router1
+
+// Настрйока порта i11
+Router1(config)#interface Serial 2/0
+Router1(config-if)#ip address 8.1.1.2 255.255.255.0
+Router1(config-if)#no shut
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+Router1(config-if)#exit
+
+// Настройка порта i12
+Router1(config)#interface FastEthernet 0/0
+Router1(config-if)#ip address 8.1.2.1 255.255.255.0
+Router1(config-if)#no shut
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+Router1(config-if)#exit
+Router1(config)#exit
+
+// Сохранение настроек
+%SYS-5-CONFIG_I: Configured from console by console
+write
+Building configuration...
+[OK]
+Router1#
