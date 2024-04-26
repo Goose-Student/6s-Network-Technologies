@@ -1,0 +1,49 @@
+// Настрйока Telnet на Router1
+Router1#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router1(config)#line vty 0 4
+Router1(config-line)#password
+% Incomplete command.
+Router1(config-line)#exit
+Router1(config)#exit
+Router1#
+%SYS-5-CONFIG_I: Configured from console by console
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router1(config)#line vty 0 4
+Router1(config-line)#password password
+Router1(config-line)#login
+Router1(config-line)#exit
+Router1(config)#exit
+Router1#
+%SYS-5-CONFIG_I: Configured from console by console
+write
+Building configuration...
+[OK]
+
+
+// Вход по Telnet с Router2 на Router1
+Router2#telnet 8.1.2.1
+Trying 8.1.2.1 ...Open
+
+
+User Access Verification
+
+Password: 
+Router1>show user
+    Line       User       Host(s)              Idle       Location
+   0 con 0                idle                 00:07:59 
+*134 vty 0                idle                 00:00:00 8.1.2.2
+
+  Interface    User               Mode         Idle     Peer Address
+Router1>
+Router2#show sessions
+Conn Host                Address             Byte  Idle Conn Name
+*  1 8.1.2.1             8.1.2.1                0     0 8.1.2.1
+Router2#resume 1
+[Resuming connection 1 to 8.1.2.1 ... ]
+disconnect 1
+?Invalid connection name
+Router1>
+Router2#disconnect 1
+Closing connection to 8.1.2.1 [confirm]
