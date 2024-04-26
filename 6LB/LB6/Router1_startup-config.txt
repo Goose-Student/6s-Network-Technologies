@@ -1,0 +1,82 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 8.1.2.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ ip address 8.1.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Serial2/0
+ no ip address
+ shutdown
+!
+interface Serial3/0
+ no ip address
+ clock rate 2000000
+!
+interface FastEthernet4/0
+ no ip address
+!
+interface FastEthernet5/0
+ no ip address
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ password password
+ login
+!
+!
+!
+end
+
