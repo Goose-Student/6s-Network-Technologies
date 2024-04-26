@@ -1,0 +1,15 @@
+
+Подключение:      Ethernet
+Сетевой адаптер:  Realtek PCIe GbE Family Controller
+Физический адрес: B4-2E-99-A8-1E-72
+Имя транспорта:   \Device\Tcpip_{F4BAB385-F376-46D2-9AB3-CC9B7A6BB723}
+
+Подключение:      VMware Network Adapter VMnet1
+Сетевой адаптер:  VMware Virtual Ethernet Adapter for VMnet1
+Физический адрес: 00-50-56-C0-00-01
+Имя транспорта:   \Device\Tcpip_{5C70A0F8-4F11-49BB-A9D4-77E750D6CC1E}
+
+Подключение:      VMware Network Adapter VMnet8
+Сетевой адаптер:  VMware Virtual Ethernet Adapter for VMnet8
+Физический адрес: 00-50-56-C0-00-08
+Имя транспорта:   \Device\Tcpip_{15F0AB90-89DF-4088-8DF3-665B556F2920}
