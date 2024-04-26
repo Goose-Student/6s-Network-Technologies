@@ -1,0 +1,15 @@
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname Router2
+Router(config)#interface FastEthernet 0/0
+Router(config-if)#ip address 8.1.2.2 255.255.255.0
+Router(config-if)#no shut
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+Router(config-if)#exit
+Router(config)#exit
+%SYS-5-CONFIG_I: Configured from console by console
+write
+Building configuration...
+[OK]
+Router#
