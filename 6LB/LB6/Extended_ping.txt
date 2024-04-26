@@ -1,0 +1,65 @@
+// ping от i12 к i21
+Router1#ping
+Protocol [ip]: 
+Target IP address: 8.1.2.2
+Repeat count [5]: 
+Datagram size [100]: 
+Timeout in seconds [2]: 
+Extended commands [n]: y
+Source address or interface: 8.1.2.1
+Type of service [0]: 
+Set DF bit in IP header? [no]: 
+Validate reply data? [no]: 
+Data pattern [0xABCD]: 
+Loose, Strict, Record, Timestamp, Verbose[none]: 
+Sweep range of sizes [n]: 
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.2.2, timeout is 2 seconds:
+Packet sent with a source address of 8.1.2.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+
+// ping от i11 к i31
+Router1#ping
+Protocol [ip]: 
+Target IP address: 8.1.1.2
+Repeat count [5]: 
+Datagram size [100]: 
+Timeout in seconds [2]: 
+Extended commands [n]: y
+Source address or interface: 8.1.1.1
+Type of service [0]: 
+Set DF bit in IP header? [no]: 
+Validate reply data? [no]: 
+Data pattern [0xABCD]: 
+Loose, Strict, Record, Timestamp, Verbose[none]: 
+Sweep range of sizes [n]: 
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.1.2, timeout is 2 seconds:
+Packet sent with a source address of 8.1.1.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+// ping от i22 к i32
+Router1#ping
+Protocol [ip]: 
+Target IP address: 8.1.3.2
+Repeat count [5]: 
+Datagram size [100]: 
+Timeout in seconds [2]: 
+Extended commands [n]: y
+Source address or interface: 8.1.3.1
+% Invalid source
+Source address or interface: 
+Type of service [0]: 
+Set DF bit in IP header? [no]: 
+Validate reply data? [no]: 
+Data pattern [0xABCD]: 
+Loose, Strict, Record, Timestamp, Verbose[none]: 
+Sweep range of sizes [n]: 
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.3.2, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+
