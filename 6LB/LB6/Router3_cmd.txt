@@ -24,4 +24,14 @@ Router3(config)#exit
 write
 Building configuration...
 [OK]
+
+// Проверка назанченных адресов
+Router3#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        unassigned      YES unset  up                    down 
+FastEthernet1/0        8.1.3.2         YES manual up                    up 
+Serial2/0              8.1.1.2         YES manual up                    up 
+Serial3/0              unassigned      YES unset  down                  down 
+FastEthernet4/0        unassigned      YES unset  down                  down 
+FastEthernet5/0        unassigned      YES unset  down                  down
 Router3#
