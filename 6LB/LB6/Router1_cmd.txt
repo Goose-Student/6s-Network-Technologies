@@ -5,10 +5,10 @@ Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#hostname Router1
 
 // Настрйока порта i11
-Router1(config)#interface Serial 2/0
+Router1(config)#interface FastEthernet 1/0
 Router1(config-if)#ip address 8.1.1.2 255.255.255.0
 Router1(config-if)#no shut
-%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+%LINK-5-CHANGED: Interface FastEthernet 1/0, changed state to up
 Router1(config-if)#exit
 
 // Настройка порта i12
@@ -29,8 +29,8 @@ Building configuration...
 Router1#show ip interface brief
 Interface              IP-Address      OK? Method Status                Protocol 
 FastEthernet0/0        8.1.2.1         YES manual up                    up 
-FastEthernet1/0        unassigned      YES unset  up                    down 
-Serial2/0              8.1.1.2         YES manual up                    up 
+FastEthernet1/0        8.1.1.2         YES manual up                    up 
+Serial2/0              unassigned      YES manual administratively down down 
 Serial3/0              unassigned      YES unset  down                  down 
 FastEthernet4/0        unassigned      YES unset  down                  down 
 FastEthernet5/0        unassigned      YES unset  down                  down
