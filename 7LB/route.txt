@@ -1,0 +1,58 @@
+//* Назначение маршрутов *//
+Router1(config)# ip route 1.1.5.0 255.255.255.0 1.1.1.2
+Router2(config)# ip route 1.1.4.0 255.255.255.0 1.1.1.1
+Router2(config)# ip route 1.1.6.0 255.255.255.0 1.1.5.1
+Router3(config)# ip route 1.1.4.0 255.255.255.0 1.1.2.1
+Router3(config)# ip route 1.1.5.0 255.255.255.0 1.1.3.1
+Router3(config)# ip route 1.1.6.0 255.255.255.0 1.1.6.1
+
+//* Просмотр таблицы маршрутов Route1 *//
+Router1#show ip rou
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     8.0.0.0/24 is subnetted, 3 subnets
+C       8.1.1.0 is directly connected, Serial2/0
+C       8.1.3.0 is directly connected, Serial3/0
+C       8.1.4.0 is directly connected, FastEthernet0/0
+
+//* Просмотр таблицы маршрутов Route2 *//
+Router2#show ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     8.0.0.0/24 is subnetted, 3 subnets
+C       8.1.1.0 is directly connected, Serial2/0
+C       8.1.2.0 is directly connected, Serial3/0
+C       8.1.5.0 is directly connected, FastEthernet0/0
+
+//* Просмотр таблицы маршрутов Route3 *//
+Router3#show ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     8.0.0.0/24 is subnetted, 3 subnets
+C       8.1.2.0 is directly connected, Serial2/0
+C       8.1.3.0 is directly connected, Serial3/0
+C       8.1.6.0 is directly connected, FastEthernet0/0
