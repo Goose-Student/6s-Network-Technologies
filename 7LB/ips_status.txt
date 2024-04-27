@@ -1,0 +1,364 @@
+//* show running-config и show ip interface brief на Router1 *//
+Router1#show running-config
+Building configuration...
+
+Current configuration : 734 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 8.1.4.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial2/0
+ ip address 8.1.1.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial3/0
+ ip address 8.1.3.1 255.255.255.0
+!
+interface FastEthernet4/0
+ no ip address
+ shutdown
+!
+interface FastEthernet5/0
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+Router1#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        8.1.4.1         YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              8.1.1.1         YES manual up                    up 
+Serial3/0              8.1.3.1         YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+
+
+//* show running-config и show ip interface brief на Router2 *//
+Router2#show running-config
+Building configuration...
+
+Current configuration : 714 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 8.1.5.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial2/0
+ ip address 8.1.1.2 255.255.255.0
+!
+interface Serial3/0
+ ip address 8.1.2.1 255.255.255.0
+!
+interface FastEthernet4/0
+ no ip address
+ shutdown
+!
+interface FastEthernet5/0
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+Router2#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        8.1.5.1         YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              8.1.1.2         YES manual up                    up 
+Serial3/0              8.1.2.1         YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+
+
+//* show running-config и show ip interface brief на Router3 *//
+Router3#show running-config
+Building configuration...
+
+Current configuration : 754 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router3
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 8.1.6.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial2/0
+ ip address 8.1.2.2 255.255.255.0
+ clock rate 2000000
+!
+interface Serial3/0
+ ip address 8.1.3.2 255.255.255.0
+ clock rate 2000000
+!
+interface FastEthernet4/0
+ no ip address
+ shutdown
+!
+interface FastEthernet5/0
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+Router3#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        8.1.6.1         YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              8.1.2.2         YES manual up                    up 
+Serial3/0              8.1.3.2         YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+
+
+//*  ipconfig PC1 *//
+C:\>ipconfig
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::2E0:8FFF:FE31:B3E2
+   IPv6 Address....................: ::
+   IPv4 Address....................: 8.1.4.2
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+
+//*  ipconfig PC2 *//
+C:\>ipconfig
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::209:7CFF:FE3A:937D
+   IPv6 Address....................: ::
+   IPv4 Address....................: 8.1.5.2
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+
+//*  ipconfig PC3 *//
+C:\>ipconfig
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::202:17FF:FEBB:EC4C
+   IPv6 Address....................: ::
+   IPv4 Address....................: 8.1.6.2
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
