@@ -1,0 +1,23 @@
+// show cdp neighbors на Router 1
+Router1#show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
+Router2      Ser 2/0          134            R       PT1000      Ser 2/0
+Router3      Ser 3/0          129            R       PT1000      Ser 2/0
+
+// show cdp neighbors на Router 2
+Router2#show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
+Router1      Ser 2/0          152            R       PT1000      Ser 2/0
+Router3      Ser 3/0          128            R       PT1000      Ser 3/0
+
+// show cdp neighbors на Router 3
+Router3#show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
+Router2      Ser 3/0          146            R       PT1000      Ser 3/0
+Router1      Ser 2/0          165            R       PT1000      Ser 3/0
