@@ -3,7 +3,13 @@ Router1#ping 8.1.1.2
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.1.2, timeout is 2 seconds:
 !!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/4/11 ms
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/6/18 ms
+
+Router1#ping 8.1.3.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.1.3.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/4/17 ms
 
 Router1#ping 8.1.4.2
 Type escape sequence to abort.
@@ -11,48 +17,41 @@ Sending 5, 100-byte ICMP Echos to 8.1.4.2, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/3 ms
 
-Router1#ping 8.1.2.2
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.2.2, timeout is 2 seconds:
-.....
-Success rate is 0 percent (0/5)
-
-
-//* ping from Router2 (8.1.1.1, 8.1.5.2, 8.1.3.2) *//
+//* ping from Router2 (8.1.1.1, 8.1.5.2, 8.1.2.2) *//
 Router2#ping 8.1.1.1
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.1.1, timeout is 2 seconds:
 !!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/3/13 ms
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/4/13 ms
 
 Router2#ping 8.1.5.2
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.5.2, timeout is 2 seconds:
 .!!!!
-Success rate is 80 percent (4/5), round-trip min/avg/max = 0/1/4 ms
+Success rate is 80 percent (4/5), round-trip min/avg/max = 0/0/3 ms
 
-Router2#ping 8.1.3.2
+Router2#ping 8.1.2.2
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.3.2, timeout is 2 seconds:
-.....
-Success rate is 0 percent (0/5)
-
+Sending 5, 100-byte ICMP Echos to 8.1.2.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/17 ms
 
 //* ping from Router3 (8.1.2.1, 8.1.6.2, 8.1.3.1) *//
 Router3#ping 8.1.2.1
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.2.1, timeout is 2 seconds:
-.....
-Success rate is 0 percent (0/5)
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/12/23 ms
 
 Router3#ping 8.1.6.2
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.6.2, timeout is 2 seconds:
 .!!!!
-Success rate is 80 percent (4/5), round-trip min/avg/max = 0/1/3 ms
+Success rate is 80 percent (4/5), round-trip min/avg/max = 0/0/0 ms
 
 Router3#ping 8.1.3.1
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 8.1.3.1, timeout is 2 seconds:
-.....
-Success rate is 0 percent (0/5)
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/10 ms
+

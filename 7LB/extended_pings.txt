@@ -1,59 +1,12 @@
-//* *//
-Router1#ping
-Protocol [ip]: 
+//* На маршрутизаторе Router1 от PC2 к PC3 *//
 Target IP address: 8.1.5.2
-Repeat count [5]: 
-Datagram size [100]: 
-Timeout in seconds [2]: 
-Extended commands [n]: y
 Source address or interface: 8.1.4.1
-Type of service [0]: 
-Set DF bit in IP header? [no]: 
-Validate reply data? [no]: 
-Data pattern [0xABCD]: 
-Loose, Strict, Record, Timestamp, Verbose[none]: 
-Sweep range of sizes [n]: 
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.5.2, timeout is 2 seconds:
-Packet sent with a source address of 8.1.4.1
-Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
 
-//* *//
-Router2#ping
-Protocol [ip]: 
+//* На маршрутизаторе Router2 от PC1 к PC3 *//
 Target IP address: 8.1.6.2
-Repeat count [5]: 
-Datagram size [100]: 
-Timeout in seconds [2]: 
-Extended commands [n]: y
 Source address or interface: 8.1.5.1
-Type of service [0]: 
-Set DF bit in IP header? [no]: 
-Validate reply data? [no]: 
-Data pattern [0xABCD]: 
-Loose, Strict, Record, Timestamp, Verbose[none]: 
-Sweep range of sizes [n]: 
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.6.2, timeout is 2 seconds:
-Packet sent with a source address of 8.1.5.1
-Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
 
-//* *//
-Router3#ping
-Protocol [ip]: 
+//* На маршрутизаторе Router3 от PC1 к PC2 *//
 Target IP address: 8.1.5.2
-Repeat count [5]: 
-Datagram size [100]: 
-Timeout in seconds [2]: 
-Extended commands [n]: y
 Source address or interface: 8.1.6.1
-Type of service [0]: 
-Set DF bit in IP header? [no]: 
-Validate reply data? [no]: 
-Data pattern [0xABCD]: 
-Loose, Strict, Record, Timestamp, Verbose[none]: 
-Sweep range of sizes [n]: 
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 8.1.5.2, timeout is 2 seconds:
-Packet sent with a source address of 8.1.6.1
-Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
