@@ -8,9 +8,9 @@ from typing import Tuple, List
 from common.network import Socket, Headers, Messages
 
 PATH = './workgroup.bin'
-HOST = ''
+HOST = '127.0.0.1'
 PORT = 25565
-CONN_LIMIT = 0
+CONN_LIMIT = 3
 
 
 def file_type(content: bytes) -> bytes:
@@ -215,7 +215,7 @@ while True:
     server_queue = [_ for _ in server_queue if _.is_alive()]
 
     # Обработка соединения
-    client_socket.settimeout(60)
+    client_socket.settimeout(120)
     handler = Handler(client_socket, client_address, server_data, server_queue)
     handler.start()
     server_queue.append(handler)

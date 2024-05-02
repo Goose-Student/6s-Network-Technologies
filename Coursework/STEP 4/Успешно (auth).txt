@@ -1,0 +1,12 @@
+connect@sepPython3 Client Win64@sepauth@sep1@end
+
+connect@sepуспешное подключение@end
+
+auth@sepuser@seppassword@end
+
+auth@sepуспешная аутентификация@end
+
+upload@sepfile.txt@sepEat some more of these soft French rolls, and drink some tea@end
+
+upload@sepуспешная передача файла@end
+

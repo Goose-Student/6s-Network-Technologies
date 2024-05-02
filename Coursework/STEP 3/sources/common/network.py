@@ -37,23 +37,23 @@ class Messages:
         REQ_ERR: Неверный запрос.
     """
     # Сообщения о подключении
-    CONN_SUC = 'успешное подключение'.encode()
-    CONN_ERR = 'ошибка подключения'.encode()
+    CONN_SUC = 'успешное подключение'.encode("latin-1")
+    CONN_ERR = 'ошибка подключения'.encode("latin-1")
 
     # Сообщения авторизации
-    AUTH_SUC = 'успешная аутентификация'.encode()
-    AUTH_ERR = 'неверный логин или пароль'.encode()
+    AUTH_SUC = 'успешная аутентификация'.encode("latin-1")
+    AUTH_ERR = 'неверный логин или пароль'.encode("latin-1")
 
     # Регистрационные сообщения
-    REG_SUC = 'успешная регистрация'.encode()
-    REG_ERR = 'пользователь уже существует'.encode()
+    REG_SUC = 'успешная регистрация'.encode("latin-1")
+    REG_ERR = 'пользователь уже существует'.encode("latin-1")
 
     # Файловые сообщения
-    UP_SUC = 'успешная передача файла'.encode()
-    UP_ERR = 'неверный тип файла'.encode()
+    UP_SUC = 'успешная передача файла'.encode("latin-1")
+    UP_ERR = 'неверный тип файла'.encode("latin-1")
 
     # Общие сообщения
-    REQ_ERR = 'неверный запрос'.encode()
+    REQ_ERR = 'неверный запрос'.encode("latin-1")
 
 
 class Socket(socket):

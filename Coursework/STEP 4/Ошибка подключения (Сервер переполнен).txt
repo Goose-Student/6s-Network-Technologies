@@ -1,0 +1,4 @@
+connect@sepPython3 Client Win64@sepauth@sep1@end
+
+connect@sepошибка подключения@end
+

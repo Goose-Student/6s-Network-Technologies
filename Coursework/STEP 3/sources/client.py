@@ -42,8 +42,8 @@ class Handler(Thread):
         Пользователь выбирает метод (аутентификация или регистрация) и версию протокола.
         """
         user_agent = b'Python3 Client Win64'
-        method = input('Введите метод (<auth> или <reg>): ').strip().encode()
-        version = input('Введите версию (<1> или <2>): ').strip().encode()
+        method = input('Введите метод (<auth> или <reg>): ').strip().encode("latin-1")
+        version = input('Введите версию (<1> или <2>): ').strip().encode("latin-1")
 
         self._socket.send(Headers.CONN, user_agent, method, version)
         msgs = self._socket.receive(target_len=2)
@@ -68,8 +68,8 @@ class Handler(Thread):
 
         Пользователь вводит логин и пароль, затем отправляет их для аутентификации на сервере.
         """
-        login = input('Введите логин: ').strip().encode()
-        password = input('Введите пароль: ').strip().encode()
+        login = input('Введите логин: ').strip().encode("latin-1")
+        password = input('Введите пароль: ').strip().encode("latin-1")
 
         self._socket.send(Headers.AUTH, login, password)
         msgs = self._socket.receive(target_len=2)
@@ -86,8 +86,8 @@ class Handler(Thread):
 
         Пользователь вводит логин и пароль, затем отправляет их для регистрации на сервере.
         """
-        login = input('Введите логин: ').strip().encode()
-        password = input('Введите пароль: ').strip().encode()
+        login = input('Введите логин: ').strip().encode("latin-1")
+        password = input('Введите пароль: ').strip().encode("latin-1")
 
         self._socket.send(Headers.REG, login, password)
         msgs = self._socket.receive(target_len=2)
@@ -109,7 +109,7 @@ class Handler(Thread):
         if not is_exists(path):
             return print(f"LocalERR: файл {path} не существует")
 
-        fileName = os.path.basename(path).encode()
+        fileName = os.path.basename(path).encode("latin-1")
         with open(path, 'rb') as file:
             content = file.read()
 
@@ -124,7 +124,7 @@ class Handler(Thread):
 
 
 client_socket = Socket(AF_INET, SOCK_STREAM)
-client_socket.settimeout(60)
+client_socket.settimeout(120)
 client_socket.connect(('127.0.0.1', 25565))
 handler = Handler(client_socket)
 handler.start()
